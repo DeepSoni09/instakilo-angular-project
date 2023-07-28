@@ -1,0 +1,378 @@
+<button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button"
+  class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+  <span class="sr-only">Open sidebar</span>
+  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" fill-rule="evenodd"
+      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
+    </path>
+  </svg>
+</button>
+
+<aside id="logo-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+  aria-label="Sidebar">
+  <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <a href="https://flowbite.com/" class="flex items-center pl-2.5 mb-3">
+      <img src="https://cdn-icons-png.flaticon.com/128/739/739193.png" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
+      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Instakilo</span>
+    </a>
+    <ul class="space-y-2 font-medium">
+      <li>
+  <app-search (transfersearchdata)="receive($event)"></app-search>
+
+      </li>
+      <li>
+        <ng-container *ngFor="let c of tu">
+          <ng-container *ngIf="storedata==='' || c.Name.toLowerCase().includes(storedata.toLowerCase())">
+
+
+
+            <div class="flex items-center gap-4 p-4" (click)="chatclick(c)">
+              <img class="w-12 h-12 rounded-full" [src]="c.ProfileImage" alt="">
+              <div class="flex flex-col">
+                <strong class="text-slate-900 text-sm font-medium dark:text-slate-200">{{c.Name}}</strong>
+                <span class="text-slate-500 text-sm font-medium dark:text-slate-400">{{c.LastMessage}}</span>
+                <div></div>
+              </div>
+            </div>
+
+          </ng-container>
+        </ng-container>
+      </li>
+
+
+
+
+
+    </ul>
+  </div>
+</aside>
+
+<div class="p-4 sm:ml-64">
+  <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+
+
+
+    <div class=" lg:col-span-2 lg:block" *ngIf="bool ; else show">
+      <div class="w-full">
+        <div class="relative flex items-center p-3 border-b border-gray-300">
+          <img class="object-cover w-10 h-10 rounded-full"
+            [src]="simg" alt="username" />
+          <span class="block ml-2 font-bold text-gray-600">{{sname}}</span>
+          <span class="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3">
+          </span>
+        </div>
+        <div class="relative w-full p-6 overflow-y-auto h-[40rem]">
+          <ul class="space-y-2">
+            <li class="flex justify-start">
+              <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
+                <span class="block">{{smsg}}</span>
+              </div>
+            </li>
+            
+          </ul>
+        </div>
+
+        <div class="flex items-center justify-between w-full p-3 border-t border-gray-300">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+            </svg>
+          </button>
+
+          <input type="text" placeholder="Message"
+            class="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
+            name="message" required />
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          </button>
+          <button type="submit">
+            <svg class="w-5 h-5 text-gray-500 origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<ng-template #show>
+  <div class="hidden lg:col-span-2 lg:block">
+    <div class="w-full">
+      <div class="relative flex items-center p-3 border-b border-gray-300">
+        <img class="object-cover w-10 h-10 rounded-full"
+          src="https://app.smartkeeda.com/demoimage/profile/p2.jpg" alt="username" />
+        <span class="block ml-2 font-bold text-gray-600">Ateno</span>
+        <span class="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3">
+        </span>
+      </div>
+      <div class="relative w-full p-6 overflow-y-auto h-[40rem]">
+        <ul class="space-y-2">
+          <li class="flex justify-start">
+            <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
+              <span class="block">How are you ?</span>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="flex items-center justify-between w-full p-3 border-t border-gray-300">
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+          </svg>
+        </button>
+
+        <input type="text" placeholder="Message"
+          class="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
+          name="message" required />
+        <button>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+        </button>
+        <button type="submit">
+          <svg class="w-5 h-5 text-gray-500 origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20" fill="currentColor">
+            <path
+              d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class=" relative rounded-xl overflow-auto p-8">
+  <!-- search-component -->
+  <!-- search component ends here -->
+
+
+
+  <!-- chat-list -->
+  <!-- <div
+    class="hide-bar overflow-auto h-72 relative max-w-sm mx-auto bg-white dark:bg-slate-800 dark:highlight-white/5 shadow-lg ring-1 ring-black/5 rounded-xl flex flex-col divide-y dark:divide-slate-200/5">
+    <ng-container *ngFor="let c of tu">
+      <ng-container *ngIf="storedata==='' || c.Name.toLowerCase().includes(storedata.toLowerCase())">
+
+
+
+        <div class="flex items-center gap-4 p-4" (click)="chatclick(c)">
+          <img class="w-12 h-12 rounded-full" [src]="c.ProfileImage" alt="">
+          <div class="flex flex-col">
+            <strong class="text-slate-900 text-sm font-medium dark:text-slate-200">{{c.Name}}</strong>
+            <span class="text-slate-500 text-sm font-medium dark:text-slate-400">{{c.LastMessage}}</span>
+            <div></div>
+          </div>
+        </div>
+
+      </ng-container>
+    </ng-container>
+  </div> -->
+
+  <!-- chat-list ends here -->
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- chatdetails -->
+
+
+
+<!-- chat-details ends here -->
+
+
+
+
+
+
+
+
+
+
+<div class="container mx-auto">
+  <div class="min-w-full border rounded lg:grid lg:grid-cols-3">
+    <!-- <div class="border-r border-gray-300 lg:col-span-1">
+      <div class="mx-3 my-3">
+        <div class="relative text-gray-600">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              viewBox="0 0 24 24" class="w-6 h-6 text-gray-300">
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </span>
+          <input type="search" class="block w-full py-2 pl-10 bg-gray-100 rounded outline-none" name="search"
+            placeholder="Search" required />
+        </div>
+      </div>
+
+      <ul class="overflow-auto h-[32rem]">
+        <h2 class="my-2 mb-2 ml-2 text-lg text-gray-600">Chats</h2>
+        <li>
+          <a
+            class="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+            <img class="object-cover w-10 h-10 rounded-full"
+              src="https://cdn.pixabay.com/photo/2018/09/12/12/14/man-3672010__340.jpg" alt="username" />
+            <div class="w-full pb-2">
+              <div class="flex justify-between">
+                <span class="block ml-2 font-semibold text-gray-600">Jhon Don</span>
+                <span class="block ml-2 text-sm text-gray-600">25 minutes</span>
+              </div>
+              <span class="block ml-2 text-sm text-gray-600">bye</span>
+            </div>
+          </a>
+          <a
+            class="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out bg-gray-100 border-b border-gray-300 cursor-pointer focus:outline-none">
+            <img class="object-cover w-10 h-10 rounded-full"
+              src="https://cdn.pixabay.com/photo/2016/06/15/15/25/loudspeaker-1459128__340.png" alt="username" />
+            <div class="w-full pb-2">
+              <div class="flex justify-between">
+                <span class="block ml-2 font-semibold text-gray-600">Same</span>
+                <span class="block ml-2 text-sm text-gray-600">50 minutes</span>
+              </div>
+              <span class="block ml-2 text-sm text-gray-600">Good night</span>
+            </div>
+          </a>
+          <a
+            class="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+            <img class="object-cover w-10 h-10 rounded-full"
+              src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg" alt="username" />
+            <div class="w-full pb-2">
+              <div class="flex justify-between">
+                <span class="block ml-2 font-semibold text-gray-600">Emma</span>
+                <span class="block ml-2 text-sm text-gray-600">6 hour</span>
+              </div>
+              <span class="block ml-2 text-sm text-gray-600">Good Morning</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div> -->
+    <div class="hidden lg:col-span-2 lg:block">
+      <div class="w-full">
+        <div class="relative flex items-center p-3 border-b border-gray-300">
+          <img class="object-cover w-10 h-10 rounded-full"
+            src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083383__340.jpg" alt="username" />
+          <span class="block ml-2 font-bold text-gray-600">Emma</span>
+          <span class="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3">
+          </span>
+        </div>
+        <div class="relative w-full p-6 overflow-y-auto h-[40rem]">
+          <ul class="space-y-2">
+            <li class="flex justify-start">
+              <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
+                <span class="block">Hi</span>
+              </div>
+            </li>
+            <li class="flex justify-end">
+              <div class="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
+                <span class="block">Hiiii</span>
+              </div>
+            </li>
+            <li class="flex justify-end">
+              <div class="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
+                <span class="block">how are you?</span>
+              </div>
+            </li>
+            <li class="flex justify-start">
+              <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
+                <span class="block">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex items-center justify-between w-full p-3 border-t border-gray-300">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+            </svg>
+          </button>
+
+          <input type="text" placeholder="Message"
+            class="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
+            name="message" required />
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          </button>
+          <button type="submit">
+            <svg class="w-5 h-5 text-gray-500 origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- api component -->
+<app-apitry (transferapigetconversation)="api4($event)"></app-apitry>
+<!-- api component ends here -->

@@ -1,0 +1,81 @@
+<!-- Navbar component -->
+
+<app-navbar [titlename]="titlename" [profileimage]="img"></app-navbar>
+
+<!-- Navbar componenet ends here -->
+
+
+<!-- Story-slider -->
+
+<div class="relative rounded-xl my-10">
+  <div class="max-w-md mx-auto bg-white shadow-xl min-w-0 dark:bg-slate-800 dark:highlight-white/5">
+    <div class="hide-scroll-bar overflow-x-auto flex">
+      <div class="flex-none py-2 px-3 first:pl-6 last:pr-6" *ngFor="let a of ar">
+        <div class="flex flex-col items-center justify-center gap-3">
+          <div
+            class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-1 flex-shrink-0">
+            <img class="w-10 h-10 rounded-full" [src]="a.ProfileImage" alt="">
+          </div>
+          <strong class="text-slate-900 text-xs font-medium dark:text-slate-200 mt-0">{{a.Name}}</strong>
+
+        </div>
+      </div>
+      <div class="flex-none py-2 px-3 first:pl-6 last:pr-6" *ngFor="let a of ar">
+        <div class="flex flex-col items-center justify-center gap-3">
+          <div
+            class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-1 flex-shrink-0">
+            <img class="w-10 h-10 rounded-full" [src]="a.ProfileImage" alt="">
+          </div>
+          <strong class="text-slate-900 text-xs font-medium dark:text-slate-200 mt-0">{{a.Name}}</strong>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Story-slider ends here -->
+
+
+
+
+
+
+
+
+
+
+<!-- Post-Images -->
+
+<div class="p-6">
+
+  <div class="flex flex-wrap -m-4 gap-3 justify-center">
+
+    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+      *ngFor="let a of ar2">
+      <a href="#">
+        <img class="rounded-t-lg" [src]="a.PostImage" alt="" />
+      </a>
+      <div class="p-5">
+
+        <div class="flex items-center">
+          <img class="w-10 h-10 rounded-full mr-4" [src]="a.ProfileImage" alt="Avatar of Jonathan Reinink">
+          <div class="text-sm">
+            <p class="text-gray-900 leading-none">{{a.Name}}</p>
+            <p class="text-gray-600">{{a.Time}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Post-Images ends here -->
+
+
+
+
+
+
+
+<app-apitry (transferapimain)="api($event)" (transferapipostdata)="api2($event)"></app-apitry>

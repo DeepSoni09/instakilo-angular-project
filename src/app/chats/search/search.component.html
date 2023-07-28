@@ -1,0 +1,15 @@
+<!-- search -->
+<div class="max-w-sm mx-auto  py-4 px-2">
+  <a routerLink="home">
+    <div class="flex items-center justify-between mb-4">
+      
+      <h1 class="flex items-center text-4xl ">Chats</h1>
+        <img class="flex items-center w-10 h-10 rounded-full " src="https://app.smartkeeda.com/demoimage/profile/p2.jpg" alt="user photo">
+    </div>
+
+
+  </a>
+    <input type="text"  [(ngModel)]="bindsearchdata" (input)="trigger()" placeholder="Search Chats..."
+      class="py-2 px-2 border-2 border-gray-200 rounded-2xl w-full" />
+  </div>
+<!-- search ends here -->
