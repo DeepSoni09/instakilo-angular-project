@@ -28,7 +28,7 @@ export class ApitryComponent {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'https://instakilo-angular-project-rjzgitg1e-sonideep092003-gmailcom.vercel.app/'
+      'Access-Control-Allow-Origin': 'https://instakilo-angular-project-rjzgitg1e-sonideep092003-gmailcom.vercel.app'
       
     });
 
